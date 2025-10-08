@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudhansh Shukla | Full-Stack Developer</title>
+    <meta name="description" content="Personal portfolio of Sudhansh Shukla, a passionate Computer Science student and aspiring full-stack web developer based in Delhi, India.">
+    <meta name="keywords" content="Sudhansh Shukla, Web Developer, Full-Stack, Computer Science, DSEU, Delhi University, Portfolio">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: Poppins & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons: Lucide -->
+    <script src="https://unpkg.com/lucide-react@0.292.0/dist/umd/lucide-react.min.js"></script>
+
+    <!-- Custom CSS for gradients, animations, and typography -->
+    <style>
+        :root {
+            --bg-light: #ffffff;
+            --text-light: #1f2937;
+            --bg-dark: #0f172a;
+            --text-dark: #e2e8f0;
+            --primary-light: #3b82f6;
+            --primary-dark: #60a5fa;
+            --secondary-light: #eff6ff;
+            --secondary-dark: #1e293b;
+        }
+
+        .dark {
+            --bg-light: #0f172a;
+            --text-light: #e2e8f0;
+            --bg-dark: #ffffff;
+            --text-dark: #1f2937;
+            --primary-light: #60a5fa;
+            --primary-dark: #3b82f6;
+            --secondary-light: #1e293b;
+            --secondary-dark: #eff6ff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .gradient-text {
+             background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+
+        .dark .bg-gradient-primary {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+        }
+        
+        /* Fade-in animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Progress Bar Animation */
+        .progress-bar-fill {
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        .is-visible .progress-bar-fill {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#home" class="text-2xl font-bold gradient-text">Sudhansh Shukla</a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition">About</a>
+                    <a href="#skills" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Skills</a>
+                    <a href="#projects" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Projects</a>
+                    <a href="#experience" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Experience</a>
+                    <a href="#contact" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Contact</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800">
+                        <svg id="theme-icon-light" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg id="theme-icon-dark" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-slate-600 dark:text-slate-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">Projects</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">Experience</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        
+        <!-- Home Section -->
+        <section id="home" class="min-h-[calc(100vh-6rem)] flex items-center fade-in-section">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                        Hi, I'm <span class="gradient-text">Sudhansh Shukla</span>
+                    </h1>
+                    <p class="mt-4 text-lg md:text-xl text-slate-600 dark:text-slate-300 font-medium">Innovative Mind | Developer | Designer</p>
+                    <p class="mt-4 max-w-xl mx-auto md:mx-0 text-slate-500 dark:text-slate-400">
+                        A passionate Computer Science student and aspiring full-stack developer with a knack for creative problem-solving and building beautiful, functional web applications.
+                    </p>
+                    <div class="mt-8 flex justify-center md:justify-start space-x-4">
+                        <a href="#contact" class="bg-gradient-primary text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                            Get In Touch
+                        </a>
+                        <a href="#" class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                            Download Resume
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="relative w-72 h-72 md:w-96 md:h-96">
+                        <div class="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-50"></div>
+                        <img src="https://placehold.co/400x400/3b82f6/FFFFFF?text=SS" alt="Sudhansh Shukla" class="relative w-full h-full object-cover rounded-full shadow-2xl border-4 border-white dark:border-slate-800">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+                <div class="lg:col-span-2 flex justify-center">
+                    <img src="https://placehold.co/400x500/8b5cf6/FFFFFF?text=Sudhansh" alt="About Sudhansh Shukla" class="rounded-xl shadow-2xl w-full max-w-sm rotate-[-3deg] hover:rotate-0 transition-transform duration-300">
+                </div>
+                <div class="lg:col-span-3">
+                    <h3 class="text-2xl font-semibold mb-4 gradient-text">Aspiring Full-Stack Developer & Innovator</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mb-4">
+                        I'm a dedicated Computer Science student with a profound passion for software development, web technologies, and innovation. My journey began at Delhi Skill and Entrepreneurship University (DSEU), where I am honing my technical skills and building a strong foundation in CS fundamentals.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6">
+                        Concurrently pursuing a B.Com (Hons) from Delhi University, I bring a unique blend of technical expertise and business acumen. I thrive in collaborative environments, leveraging my skills in teamwork, leadership, and communication to drive projects forward. My goal is to create impactful digital solutions that are both user-friendly and powerful.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center space-x-2 bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747h18"></path></svg>
+                            <span class="font-semibold">Web Development</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
+                             <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                             <span class="font-semibold">Problem Solving</span>
+                        </div>
+                         <div class="flex items-center space-x-2 bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.24a2 2 0 00-1.806.547a2 2 0 00-.547 1.806l.477 2.387a6 6 0 00.517 3.86l.158.318a6 6 0 00.517 3.86l2.387.477a2 2 0 001.806-.547a2 2 0 00.547-1.806l-.477-2.387a6 6 0 00-.517-3.86l-.158-.318a6 6 0 01-.517-3.86l-.477-2.387a2 2 0 00-.547-1.806z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8V4m0 8a4 4 0 100-8 4 4 0 000 8z"></path></svg>
+                             <span class="font-semibold">Graphic Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 bg-slate-100 dark:bg-slate-800/50 rounded-xl fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-12">My Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                <!-- Technical Skills -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-center">Technical Skills</h3>
+                    <div class="space-y-6">
+                        <!-- HTML -->
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">HTML</span>
+                                <span class="text-sm font-medium">95%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
+                                <div class="bg-blue-500 h-2.5 rounded-full progress-bar-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <!-- CSS -->
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">CSS (Tailwind, Bootstrap)</span>
+                                <span class="text-sm font-medium">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
+                                <div class="bg-blue-500 h-2.5 rounded-full progress-bar-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <!-- JavaScript -->
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">JavaScript</span>
+                                <span class="text-sm font-medium">80%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
+                                <div class="bg-blue-500 h-2.5 rounded-full progress-bar-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <!-- Python -->
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">Python</span>
+                                <span class="text-sm font-medium">75%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
+                                <div class="bg-blue-500 h-2.5 rounded-full progress-bar-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Soft Skills -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-center">Soft Skills</h3>
+                    <div class="space-y-6">
+                        <!-- Leadership -->
+                         <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">Leadership</span>
+                                <span class="text-sm font-medium">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
+                                <div class="bg-purple-500 h-2.5 rounded-full progress-bar-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <!-- Communication -->
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">Communication</span>
+                                <span class="text-sm font-medium">95%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
+                                <div class="bg-purple-500 h-2.5 rounded-full progress-bar-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <!-- Teamwork -->
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">Teamwork</span>
+                                <span class="text-sm font-medium">85%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
+                                <div class="bg-purple-500 h-2.5 rounded-full progress-bar-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <!-- Video Editing -->
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">Video Editing</span>
+                                <span class="text-sm font-medium">80%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
+                                <div class="bg-purple-500 h-2.5 rounded-full progress-bar-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="group bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/3b82f6/FFFFFF?text=Project+1" alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">College Attendance Management System</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">A web-based system to streamline and automate student attendance tracking for college courses.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">PHP</span>
+                             <span class="bg-slate-100 text-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-slate-700 dark:text-slate-200">MySQL</span>
+                        </div>
+                        <a href="#" class="font-semibold text-blue-500 dark:text-blue-400 hover:underline">View Demo &rarr;</a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="group bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/8b5cf6/FFFFFF?text=Project+2" alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">DSEU Insider Website</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">An informational hub and community platform for students of DSEU, featuring news, events, and resources.</p>
+                         <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">HTML</span>
+                             <span class="bg-slate-100 text-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-slate-700 dark:text-slate-200">CSS</span>
+                             <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">JS</span>
+                        </div>
+                        <a href="#" class="font-semibold text-blue-500 dark:text-blue-400 hover:underline">View Site &rarr;</a>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="group bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/10b981/FFFFFF?text=Project+3" alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">AI News Summarizer</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">An intelligent tool that fetches the latest news articles and provides concise, AI-generated summaries.</p>
+                         <div class="flex flex-wrap gap-2 mb-4">
+                             <span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Python</span>
+                             <span class="bg-slate-100 text-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-slate-700 dark:text-slate-200">AI/ML</span>
+                        </div>
+                        <a href="#" class="font-semibold text-blue-500 dark:text-blue-400 hover:underline">View on GitHub &rarr;</a>
+                    </div>
+                </div>
+                <!-- Add more projects as needed -->
+            </div>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section id="experience" class="py-24 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-12">Journey & Credentials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <!-- Experience -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-8 text-center md:text-left">Experience</h3>
+                    <div class="relative border-l-2 border-blue-500 pl-8 space-y-12">
+                         <div class="absolute -left-1.5 w-3 h-3 bg-blue-500 rounded-full"></div>
+                        <div>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">2022 - Present</p>
+                            <h4 class="font-bold text-lg">Campus Ambassador</h4>
+                            <p class="font-medium text-slate-600 dark:text-slate-300">DSEU, Ranhola Campus</p>
+                            <p class="text-sm mt-2 text-slate-500 dark:text-slate-400">Representing the university at various events, organizing workshops, and acting as a liaison between students and administration.</p>
+                        </div>
+                        <div class="absolute -left-1.5 w-3 h-3 bg-blue-500 rounded-full"></div>
+                        <div>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">2021 - Present</p>
+                            <h4 class="font-bold text-lg">Class Representative</h4>
+                            <p class="font-medium text-slate-600 dark:text-slate-300">DSEU, Ranhola Campus</p>
+                            <p class="text-sm mt-2 text-slate-500 dark:text-slate-400">Serving as the primary point of contact for my class, addressing student concerns and facilitating communication with faculty.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Education -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-8 text-center md:text-left">Education</h3>
+                     <div class="relative border-l-2 border-purple-500 pl-8 space-y-12">
+                        <div class="absolute -left-1.5 w-3 h-3 bg-purple-500 rounded-full"></div>
+                        <div>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">2021 - 2024</p>
+                            <h4 class="font-bold text-lg">Diploma in Computer Science</h4>
+                            <p class="font-medium text-slate-600 dark:text-slate-300">Delhi Skill and Entrepreneurship University (DSEU)</p>
+                        </div>
+                        <div class="absolute -left-1.5 w-3 h-3 bg-purple-500 rounded-full"></div>
+                        <div>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">2022 - 2025</p>
+                            <h4 class="font-bold text-lg">Bachelor of Commerce (Hons)</h4>
+                            <p class="font-medium text-slate-600 dark:text-slate-300">University of Delhi (School of Open Learning)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-4">Get In Touch</h2>
+            <p class="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto">
+                I'm currently looking for new opportunities and collaborations. Whether you have a question or just want to say hi, feel free to reach out.
+            </p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <form action="#" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                     <div>
+                        <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                     <div>
+                        <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full bg-gradient-primary text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+                <div class="flex flex-col justify-center items-center md:items-start text-center md:text-left">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-blue-100 dark:bg-blue-900/50 rounded-full"><svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <a href="mailto:sudhansh.shukla@example.com" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400">sudhansh.shukla@example.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                             <div class="p-3 bg-blue-100 dark:bg-blue-900/50 rounded-full"><svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
+                            <div>
+                                <h4 class="font-semibold">Location</h4>
+                                <p class="text-slate-600 dark:text-slate-400">Delhi, India</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex space-x-6 justify-center md:justify-start">
+                            <a href="#" class="text-slate-500 hover:text-blue-500 transition"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                            <a href="#" class="text-slate-500 hover:text-blue-500 transition"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                            <a href="#" class="text-slate-500 hover:text-blue-500 transition"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-labelledby="instagram-icon"><title id="instagram-icon">Instagram</title><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.645-.07-4.85s.012-3.584.07-4.85c.148-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-100 dark:bg-slate-800/50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-slate-500 dark:text-slate-400">
+            <p>&copy; 2024 Sudhansh Shukla. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Sticky Header ---
+            const header = document.getElementById('header');
+            let lastScrollY = window.scrollY;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('shadow-md');
+                    if (window.scrollY > lastScrollY) {
+                         // Scrolling Down
+                         header.style.transform = 'translateY(-100%)';
+                    } else {
+                         // Scrolling Up
+                         header.style.transform = 'translateY(0)';
+                    }
+                } else {
+                    header.classList.remove('shadow-md');
+                    header.style.transform = 'translateY(0)';
+                }
+                 lastScrollY = window.scrollY;
+            });
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            // Close mobile menu on link click
+            mobileMenu.addEventListener('click', (e) => {
+                 if (e.target.tagName === 'A') {
+                    mobileMenu.classList.add('hidden');
+                 }
+            });
+
+
+            // --- Dark Mode Toggle ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIconLight = document.getElementById('theme-icon-light');
+            const themeIconDark = document.getElementById('theme-icon-dark');
+            const html = document.documentElement;
+
+            // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+                themeIconLight.classList.remove('hidden');
+                themeIconDark.classList.add('hidden');
+            } else {
+                html.classList.remove('dark');
+                themeIconLight.classList.add('hidden');
+                themeIconDark.classList.remove('hidden');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                if (html.classList.contains('dark')) {
+                    localStorage.theme = 'dark';
+                    themeIconLight.classList.remove('hidden');
+                    themeIconDark.classList.add('hidden');
+                } else {
+                    localStorage.theme = 'light';
+                    themeIconLight.classList.add('hidden');
+                    themeIconDark.classList.remove('hidden');
+                }
+            });
+
+            // --- Fade-in on Scroll Animation ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
